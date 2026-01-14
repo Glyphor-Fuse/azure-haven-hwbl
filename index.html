@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>AURA | Wellness Retreat Southern Italy</title>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@100;300;600;900&display=swap' rel='stylesheet'>
+    <style>
+        :root {
+            --bg: #F9F7F2;
+            --accent: #B08D74;
+            --deep-sea: #1A2E35;
+            --text: #2C2C2C;
+            --glass: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+            color: white;
+        }
+
+        .nav-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-img {
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.85);
+            animation: slowPan 20s infinite alternate linear;
+        }
+
+        @keyframes slowPan {
+            from { transform: scale(1) translate(0,0); }
+            to { transform: scale(1.1) translate(-2%, -2%); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: clamp(4rem, 12vw, 10rem);
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero-subtitle {
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+        }
+
+        section {
+            padding: 10vw 5%;
+            position: relative;
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            align-items: center;
+        }
+
+        .intro-text {
+            grid-column: 2 / 7;
+            z-index: 2;
+        }
+
+        .intro-text h2 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--deep-sea);
+        }
+
+        .intro-text p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 400px;
+        }
+
+        .intro-visual {
+            grid-column: 7 / 13;
+            position: relative;
+            padding-left: 5vw;
+        }
+
+        .img-stack-1 {
+            width: 100%;
+            height: 60vh;
+            object-fit: cover;
+            box-shadow: 50px 50px 100px rgba(0,0,0,0.05);
+        }
+
+        .programs {
+            background-color: var(--deep-sea);
+            color: #E2DFD8;
+        }
+
+        .section-header {
+            margin-bottom: 5rem;
+            display: flex;
+            align-items: baseline;
+            gap: 2rem;
+        }
+
+        .section-number {
+            font-size: 1rem;
+            font-weight: 100;
+            opacity: 0.5;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .program-card {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            transition: transform 0.6s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .program-card h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-card p {
+            font-size: 0.9rem;
+            font-weight: 300;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            transition: all 0.4s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2vw;
+            padding: 2vw;
+        }
+
+        .gallery-item {
+            height: 80vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item.span-2 {
+            grid-column: span 2;
+            height: 60vh;
+        }
+
+        .spa-preview {
+            display: flex;
+            align-items: center;
+            gap: 10%;
+        }
+
+        .spa-img {
+            width: 45%;
+            height: 70vh;
+            object-fit: cover;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .footer {
+            padding: 8rem 5% 4rem;
+            background: white;
+            text-align: center;
+        }
+
+        .footer h2 {
+            font-size: 6vw;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            color: var(--deep-sea);
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        @media (max-width: 768px) {
+            .intro, .program-grid, .gallery, .spa-preview {
+                grid-template-columns: 1fr;
+                display: block;
+            }
+            .intro-text h2 { font-size: 3rem; }
+            .spa-img { width: 100%; height: 50vh; margin-top: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class='nav'>
+        <div class='nav-brand'>AURA</div>
+        <div class='nav-links'>
+            <a href='#'>Retreats</a>
+            <a href='#'>Spa</a>
+            <a href='#'>Living</a>
+            <a href='#'>Contact</a>
+        </div>
+    </nav>
+
+    <div class='hero'>
+        <img src='https://images.unsplash.com/photo-1519449556851-5720b33024e7?q=80&w=2071&auto=format&fit=crop' alt='Mediterranean Coast' class='hero-img'>
+        <div class='hero-content'>
+            <p class='hero-subtitle'>The Art of Being</p>
+            <h1 class='hero-title'>STILLNESS<br>FOUND</h1>
+        </div>
+    </div>
+
+    <section class='intro'>
+        <div class='intro-text'>
+            <h2 data-scroll>Where the Sea<br>Greets the Soul</h2>
+            <p>Nestled on the rugged southern limestone cliffs of Puglia, AURA is a sanctuary designed for profound reconnection. Here, time is measured only by the movement of the sun and the rhythm of the Adriatic tides.</p>
+        </div>
+        <div class='intro-visual'>
+            <img src='https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2070&auto=format&fit=crop' alt='Luxury stone architecture' class='img-stack-1'>
+        </div>
+    </section>
+
+    <section class='programs'>
+        <div class='section-header'>
+            <span class='section-number'>01</span>
+            <h2>Pathways to Clarity</h2>
+        </div>
+        <div class='program-grid'>
+            <div class='program-card'>
+                <h3>Solar Yoga</h3>
+                <p>Morning sessions on white stone terraces as the Mediterranean sun rises, focusing on fluid movement and breathwork.</p>
+                <a href='#' class='btn-outline'>Explore Program</a>
+            </div>
+            <div class='program-card'>
+                <h3>Elemental Detox</h3>
+                <p>A holistic nutritional journey utilizing local organic harvests, sea minerals, and ancient Sicilian herbal wisdom.</p>
+                <a href='#' class='btn-outline'>View Menu</a>
+            </div>
+            <div class='program-card'>
+                <h3>Deep Silence</h3>
+                <p>Guided meditative walks through centuries-old olive groves, designed to quiet the mind and heighten the senses.</p>
+                <a href='#' class='btn-outline'>Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class='spa-preview'>
+        <div style='max-width: 500px;'>
+            <h2 style='font-size: 3.5rem; color: var(--accent); margin-bottom: 2rem;'>The Thalasso Ritual</h2>
+            <p style='font-weight: 300; margin-bottom: 3rem;'>Utilizing the curative powers of the Mediterranean, our spa offers heated seawater pools, volcanic mud wraps, and salt-air inhalation therapy in a cathedral of stone.</p>
+            <a href='#' class='btn-outline' style='border-color: var(--deep-sea); color: var(--deep-sea);'>Book a Treatment</a>
+        </div>
+        <img src='https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop' alt='Luxury Spa' class='spa-img'>
+    </section>
+
+    <div class='gallery'>
+        <div class='gallery-item'><img src='https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2070&auto=format&fit=crop' alt='Italy View'></div>
+        <div class='gallery-item'><img src='https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?q=80&w=2072&auto=format&fit=crop' alt='Pool'></div>
+        <div class='gallery-item span-2'><img src='https://images.unsplash.com/photo-1502675135487-e971002a6adb?q=80&w=2072&auto=format&fit=crop' alt='Coastal Sunset'></div>
+    </div>
+
+    <footer class='footer'>
+        <h2>Begin Your Journey</h2>
+        <p style='font-weight: 100; letter-spacing: 0.3em; text-transform: uppercase;'>Inquire for 2025/2026 Season</p>
+        <div class='socials'>
+            <a href='#'>Instagram</a>
+            <a href='#'>Journal</a>
+            <a href='#'>Newsletter</a>
+        </div>
+        <p style='margin-top: 6rem; font-size: 0.6rem; opacity: 0.4;'>&copy; 2025 AURA WELLNESS. PUGLIA, ITALIA.</p>
+    </footer>
+
+
+<script>
+  let inspectorMode = false;
+  let hoveredElement = null;
+  let selectedElement = null;
+  
+  window.addEventListener('message', (event) => {
+    if (event.data?.type === 'SET_INSPECTOR_MODE') {
+      inspectorMode = event.data.enabled;
+      document.body.style.cursor = inspectorMode ? 'crosshair' : 'default';
+    }
+    
+    if (event.data?.type === 'LOCAL_UPDATE' && selectedElement) {
+      const update = event.data.update;
+      
+      if (update.text !== undefined) {
+        selectedElement.innerText = update.text;
+      }
+      
+      if (update.styles) {
+        Object.entries(update.styles).forEach(([prop, value]) => {
+          selectedElement.style[prop] = value;
+        });
+      }
+    }
+  });
+  
+  document.addEventListener('mouseover', (e) => {
+    if (!inspectorMode) return;
+    if (hoveredElement && hoveredElement !== selectedElement) {
+      hoveredElement.style.outline = '';
+    }
+    hoveredElement = e.target;
+    if (hoveredElement !== selectedElement) {
+      hoveredElement.style.outline = '2px solid #06b6d4';
+    }
+  });
+  
+  document.addEventListener('mouseout', (e) => {
+    if (!inspectorMode || !hoveredElement) return;
+    if (hoveredElement !== selectedElement) {
+      hoveredElement.style.outline = '';
+    }
+  });
+  
+  document.addEventListener('click', (e) => {
+    if (!inspectorMode) return;
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (selectedElement) {
+      selectedElement.style.outline = '';
+    }
+    
+    const el = e.target;
+    selectedElement = el;
+    el.style.outline = '3px solid #06b6d4';
+    
+    const rect = el.getBoundingClientRect();
+    const styles = window.getComputedStyle(el);
+    
+    window.parent.postMessage({
+      type: 'ELEMENT_SELECTED',
+      element: {
+        tagName: el.tagName.toLowerCase(),
+        text: el.innerText?.substring(0, 500) || '',
+        className: el.className || '',
+        styles: {
+          color: styles.color,
+          backgroundColor: styles.backgroundColor,
+          fontSize: styles.fontSize,
+          fontWeight: styles.fontWeight,
+          padding: styles.padding,
+          margin: styles.margin,
+        },
+        rect: {
+          top: rect.top,
+          left: rect.left,
+          width: rect.width,
+          height: rect.height,
+        },
+        selector: el.id ? '#' + el.id : (el.className ? '.' + el.className.split(' ')[0] : el.tagName.toLowerCase())
+      }
+    }, '*');
+  }, true);
+</script>
+</body>
+</html>
